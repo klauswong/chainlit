@@ -10,9 +10,9 @@ from chainlit.logger import logger
 def init_lc_cache():
     use_cache = config.project.cache is True and config.run.no_cache is False
 
-    if use_cache and importlib.util.find_spec("langchain") is not None:
-        from langchain.cache import SQLiteCache
-        from langchain.globals import set_llm_cache
+    if use_cache and importlib.util.find_spec("langchain_classic") is not None:
+        from langchain_classic.cache import SQLiteCache
+        from langchain_classic.globals import set_llm_cache
 
         if config.project.lc_cache_path is not None:
             set_llm_cache(SQLiteCache(database_path=config.project.lc_cache_path))
